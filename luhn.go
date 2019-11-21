@@ -31,7 +31,7 @@ func Checksum(number string) (string, error) {
 		// numeric value from character
 		n := int(c - '0')
 
-		// double every second digit
+		// double every other digit
 		if double {
 			n = doubles[n]
 		}
