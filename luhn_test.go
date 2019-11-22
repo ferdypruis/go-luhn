@@ -167,35 +167,32 @@ func TestError(t *testing.T) {
 func ExampleChecksum() {
 	number := "7992739871"
 
-	// Obtain the check digit for a numeric string
 	checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
-	fmt.Printf("The Lühn check digit for %s is %s.\n", number, checkdigit)
+	fmt.Println("The Lühn check digit for", number, "is", checkdigit)
 
 	// Output:
-	// The Lühn check digit for 7992739871 is 3.
+	// The Lühn check digit for 7992739871 is 3
 }
 
 func ExampleSign() {
 	number := "7992739871"
 
-	// Add the Lühn check digit to a numeric string
 	number, _ = luhn.Sign(number) // Ignoring error for simplicity
-	fmt.Printf("Your account number is %s.\n", number)
+	fmt.Println("Your account number is", number)
 
 	// Output:
-	// Your account number is 79927398713.
+	// Your account number is 79927398713
 }
 
 func ExampleValid() {
 	number := "79927398713"
 
-	// Verify a number against its included check digit
 	if luhn.Valid(number) {
-		fmt.Print("The number is valid.\n")
+		fmt.Println("The number is valid")
 	} else {
-		fmt.Print("The number is not valid.\n")
+		fmt.Println("The number is not valid")
 	}
 
 	// Output:
-	// The number is valid.
+	// The number is valid
 }

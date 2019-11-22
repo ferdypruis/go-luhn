@@ -12,7 +12,7 @@ const mod10 = "0987654321"
 // When the result of doubling is greater than 9 the digits are added together; 16 => 1 + 6 => 7
 var doubles = [10]int{0, 2, 4, 6, 8, 1, 3, 5, 7, 9}
 
-// Checksum returns the Lühn check digit of number.
+// Checksum returns the Lühn check digit for number.
 func Checksum(number string) (string, error) {
 	if number == "" {
 		return "", Error("input is too short")

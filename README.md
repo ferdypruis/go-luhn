@@ -6,29 +6,29 @@
 Create or validate a Lühn (mod 10) check digit in a numeric string in Go.
 
 ## Usage
+Checksum returns the Lühn check digit for number.
 ```go
-package main
+number := "7992739871"
 
-import (
-	"fmt"
-	"github.com/ferdypruis/go-luhn"
-)
+checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
+fmt.Println("The Lühn check digit for", number, "is", checkdigit)
+```
 
-func main() {
-	// Obtain the check digit for a numeric string
-	number := "7992739871"
-	checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
-	fmt.Printf("The Lühn check digit for %s is %s.\n", number, checkdigit)
+Sign returns number with its Lühn check digit appended
+```go
+number := "7992739871"
 
-	// Add the Lühn check digit to a numeric string
-	number, _ = luhn.Sign(number) // Ignoring error for simplicity
-	fmt.Printf("Your account number is %s.\n", number)
+number, _ = luhn.Sign(number) // Ignoring error for simplicity
+fmt.Println("Your account number is", number)
+```
 
-	// Verify a number against its included check digit
-	if luhn.Valid(number) {
-		fmt.Print("The number is valid.\n")
-	} else {
-		fmt.Print("The number is not valid.\n")
-	}
+Valid returns if number verifies against its appended check digit
+```go
+number := "79927398713"
+
+if luhn.Valid(number) {
+    fmt.Println("The number is valid")
+} else {
+    fmt.Println("The number is not valid")
 }
 ```
