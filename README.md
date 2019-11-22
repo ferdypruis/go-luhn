@@ -10,10 +10,8 @@ Create or validate a Lühn (mod 10) check digit in a numeric string in Go.
 package main
 
 import (
-"fmt"
-
-
-"github.com/ferdypruis/go-luhn"
+	"fmt"
+	"github.com/ferdypruis/go-luhn"
 )
 
 func main() {
