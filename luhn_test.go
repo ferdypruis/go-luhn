@@ -85,53 +85,21 @@ func TestValid(t *testing.T) {
 		{"79927398719", false},
 		{"999999999999999906", true},
 		{"999999999999999096", true},
+		// too short to contain a number and check digit
+		{"", false},
+		{"9", false},
+		// non-numerics
+		{`nein`, false},
+		{`3.14`, false},
+		{`1mississippi`, false},
+		{`2three4`, false},
+		{`!?`, false},
+		{`测试`, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.in, func(t *testing.T) {
-			got, err := luhn.Valid(tt.in)
-			if err != nil {
-				t.Errorf("Valid() error = %s", err)
-			}
-			if got != tt.want {
+			if got := luhn.Valid(tt.in); got != tt.want {
 				t.Errorf("Valid() got = %t, want %t", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestValidShortInputError(t *testing.T) {
-	tests := []string{
-		"",
-		"0",
-		"1",
-		"5",
-		"9",
-	}
-	for _, tt := range tests {
-		t.Run(tt, func(t *testing.T) {
-			_, err := luhn.Valid(tt)
-			if _, ok := err.(luhn.Error); !ok {
-				t.Errorf("Valid() error = %s, want luhn.Error", err)
-			}
-		})
-	}
-}
-
-func TestValidNotNumericError(t *testing.T) {
-	tests := []string{
-		`nein`,
-		`1mississippi`,
-		`2three4`,
-		`!?`,
-		`测试`,
-		`3.14`,
-	}
-
-	for _, tt := range tests {
-		t.Run(tt, func(t *testing.T) {
-			_, err := luhn.Valid(tt)
-			if _, ok := err.(luhn.Error); !ok {
-				t.Errorf("Valid() error = %s, want NotNumericError", err)
 			}
 		})
 	}
@@ -196,32 +164,25 @@ func TestError(t *testing.T) {
 	}
 }
 
-func ExampleValid() {
-	number := "79927398713"
-	if valid, _ := luhn.Valid(number); valid { // Ignoring error for simplicity
-		fmt.Print("The number is valid.")
+func Example() {
+	// Obtain the check digit for a numeric string
+	number := "7992739871"
+	checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
+	fmt.Printf("The Lühn check digit for %s is %s.\n", number, checkdigit)
+
+	// Add the Lühn check digit to a numeric string
+	number, _ = luhn.Sign(number) // Ignoring error for simplicity
+	fmt.Printf("Your account number is %s.\n", number)
+
+	// Verify a number against its included check digit
+	if luhn.Valid(number) {
+		fmt.Print("The number is valid.\n")
 	} else {
-		fmt.Print("The number is not valid.")
+		fmt.Print("The number is not valid.\n")
 	}
 
 	// Output:
-	// The number is valid.
-}
-
-func ExampleSign() {
-	number := "7992739871"
-	number, _ = luhn.Sign(number) // Ignoring error for simplicity
-	fmt.Printf("Your account number is %s.", number)
-
-	// Output:
-	// Your account number is 79927398713.
-}
-
-func ExampleChecksum() {
-	number := "7992739871"
-	checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
-	fmt.Printf("The Lühn check digit for %s is %s.", number, checkdigit)
-
-	// Output:
 	// The Lühn check digit for 7992739871 is 3.
+	// Your account number is 79927398713.
+	// The number is valid.
 }

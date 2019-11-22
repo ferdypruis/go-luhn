@@ -10,17 +10,27 @@ Create or validate a Lühn (mod 10) check digit in a numeric string in Go.
 package main
 
 import (
-	"github.com/ferdypruis/go-luhn"
+"fmt"
+
+
+"github.com/ferdypruis/go-luhn"
 )
 
 func main() {
-    // Verify a number against its included check digit
-    valid, err := luhn.Valid("79927398713") // valid = true
-    
-    // Obtain the check digit for a numeric string
-    checkdigit, err := luhn.Checksum("7992739871") // checkdigit = "3"
-    	
-    // Add the Lühn check digit to a numeric string
-    number, err := luhn.Sign("7992739871") // number = "79927398713"
+	// Obtain the check digit for a numeric string
+	number := "7992739871"
+	checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
+	fmt.Printf("The Lühn check digit for %s is %s.\n", number, checkdigit)
+
+	// Add the Lühn check digit to a numeric string
+	number, _ = luhn.Sign(number) // Ignoring error for simplicity
+	fmt.Printf("Your account number is %s.\n", number)
+
+	// Verify a number against its included check digit
+	if luhn.Valid(number) {
+		fmt.Print("The number is valid.\n")
+	} else {
+		fmt.Print("The number is not valid.\n")
+	}
 }
 ```

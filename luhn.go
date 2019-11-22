@@ -5,11 +5,11 @@ type Error string
 
 func (e Error) Error() string { return "luhn: " + string(e) }
 
-// mod10 is the pre-calculated modulus-10 of every number below 10
+// mod10 is the pre-calculated value of 10 minus the modulos-10 of every digit
 const mod10 = "0987654321"
 
-// doubles is the pre-calculated double of every number
-// If the result of doubling is greater than 9 the digits are added together; 16 = 1 + 6 = 7
+// doubles is the pre-calculated double of every digit
+// When the result of doubling is greater than 9 the digits are added together; 16 => 1 + 6 => 7
 var doubles = [10]int{0, 2, 4, 6, 8, 1, 3, 5, 7, 9}
 
 // Checksum returns the Lühn check digit of number.
@@ -45,16 +45,18 @@ func Checksum(number string) (string, error) {
 }
 
 // Valid returns if number verifies against its appended check digit
-func Valid(number string) (bool, error) {
+func Valid(number string) bool {
 	l := len(number) - 1
 	if l < 1 {
-		return false, Error("input is too short")
+		return false
 	}
 
 	number, check := number[:l], number[l:]
-	digit, err := Checksum(number)
+	if digit, err := Checksum(number); err == nil {
+		return check == digit
+	}
 
-	return check == digit, err
+	return false
 }
 
 // Sign returns number with its Lühn check digit appended
