@@ -5,7 +5,7 @@
 
 Create or validate a Lühn (mod 10) check digit in a numeric string in Go.
 
-## Usage
+## Examples
 Checksum returns the Lühn check digit for number.
 ```go
 number := "7992739871"
