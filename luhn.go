@@ -44,7 +44,7 @@ func Checksum(number string) (string, error) {
 	return mod10[unit : unit+1], nil
 }
 
-// Valid returns if number verifies against its appended check digit
+// Valid returns whether number verifies against its appended check digit
 func Valid(number string) bool {
 	l := len(number) - 1
 	if l < 1 {

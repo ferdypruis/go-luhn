@@ -22,7 +22,7 @@ number, _ = luhn.Sign(number) // Ignoring error for simplicity
 fmt.Println("Your account number is", number)
 ```
 
-Valid returns if number verifies against its appended check digit
+Valid returns whether number verifies against its appended check digit
 ```go
 number := "79927398713"
 
