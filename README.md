@@ -12,6 +12,9 @@ number := "7992739871"
 
 checkdigit, _ := luhn.Checksum(number) // Ignoring error for simplicity
 fmt.Println("The Lühn check digit for", number, "is", checkdigit)
+
+// Output:
+// The Lühn check digit for 7992739871 is 3
 ```
 
 Sign returns number with its Lühn check digit appended
@@ -20,6 +23,9 @@ number := "7992739871"
 
 number, _ = luhn.Sign(number) // Ignoring error for simplicity
 fmt.Println("Your account number is", number)
+
+// Output:
+// Your account number is 79927398713
 ```
 
 Valid returns whether number verifies against its appended check digit
@@ -31,4 +37,7 @@ if luhn.Valid(number) {
 } else {
     fmt.Println("The number is not valid")
 }
+
+// Output:
+// The number is valid
 ```
