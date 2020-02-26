@@ -51,12 +51,13 @@ func Valid(number string) bool {
 		return false
 	}
 
-	number, check := number[:l], number[l:]
-	if digit, err := Checksum(number); err == nil {
-		return check == digit
+	checkdigit, err := Checksum(number[:l])
+	if err != nil {
+		return false
 	}
 
-	return false
+	// compare checksum with checkdigit in input
+	return checkdigit == number[l:]
 }
 
 // Sign returns number with its Lühn check digit appended
