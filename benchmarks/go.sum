@@ -1,0 +1,10 @@
+github.com/carlmjohnson/luhn v0.0.0-20171002023824-8193367d6ab2/go.mod h1:zieX9ITeX4J2ReHrwwqGEuyIzHStofDct5uFmtqhqgE=
+github.com/issue9/assert v1.4.1/go.mod h1:Yktk83hAVl1SPSYtd9kjhBizuiBIqUQyj+D5SE2yjVY=
+github.com/issue9/sliceutil v0.6.0/go.mod h1:FUxZQC4oEw6V46afC+JOdCjOv84BA6WBNQRYGS9V4Dg=
+github.com/issue9/validation v0.2.0/go.mod h1:My0wEa+KUEiKN+1IaFEb0eqyr8KhMBPd61qV9DtBVhI=
+github.com/jancajthaml-go/luhn v0.0.0-20190723075351-a57b96ff9e94/go.mod h1:i9bHsZvbKGfK94hbrrLKaJ/WKdSYNEsHvsNaH+4ufWM=
+github.com/joeljunstrom/go-luhn v0.0.0-20190413165225-1e071b33b576/go.mod h1:pE5zuSeg07RZZfWS158WpV7oUWb1++8T2jZ/UklLM3E=
+github.com/luhnmod10/go v0.0.0-20180616225446-f4edf78f75c7/go.mod h1:4XGD+cEPfe/0DOpyopLLEGfMs/uffK9fUUxZmeORfJU=
+github.com/theplant/luhn v0.0.0-20170224032821-81a1a381387a/go.mod h1:ZaMGXj0IgDRrzbd+S4SJEqxUQSOhbsyCbM6hXiIhnXM=
+golang.org/x/text v0.3.4/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
