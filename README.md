@@ -1,6 +1,6 @@
 # go-luhn
 [![Build Status](https://travis-ci.com/ferdypruis/go-luhn.svg?branch=master)](https://travis-ci.com/ferdypruis/go-luhn)
-[![Go Reference](https://pkg.go.dev/badge/ferdypruis/go-luhn.svg)](https://pkg.go.dev/ferdypruis/go-luhn)
+[![Go Reference](https://pkg.go.dev/badge/github.com/ferdypruis/go-luhn.svg)](https://pkg.go.dev/github.com/ferdypruis/go-luhn)
 
 Create or validate a Lühn (mod 10) check digit in a numeric string in Go.
 
